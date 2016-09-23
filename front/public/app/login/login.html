@@ -1,0 +1,31 @@
+<div class="row addMargin">
+    <div class="alert alert-danger login-error col-md-2 col-md-offset-5" ng-show="message.show" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Sorry:</span>
+        Invalid Username or Password
+    </div>
+</div>
+<div class="col-sm-3 col-sm-offset-4">
+    <form ng-submit="vm.submit()">
+        <div class="row">
+            <fieldset class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >User Name</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="E-Mail" ng-model="vm.email" required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group  col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password"
+                       ng-model="vm.passcode"  required>
+            </fieldset>
+        </div>
+        <div class="col-sm-offset-6">
+            <button type="submit" class="btn btn-primary" style="margin-top: 6%;">LOGIN</button>
+        </div>
+        <div class="row col-sm-offset-3 col-md-offset-3 col-xs-offset-2 newuser">
+            <p>new user? <a href="#/register">create new account</a></p>
+        </div>
+
+    </form>
+</div>

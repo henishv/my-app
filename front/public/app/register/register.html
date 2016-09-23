@@ -1,0 +1,40 @@
+<div class="col-sm-3 col-sm-offset-4 addMargin">
+    <form ng-submit="submit()">
+        <div class="row">
+            <fieldset class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >First Name</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="First Name" ng-model="user.firstName"  required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group  col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Last Name</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Last Name"
+                       ng-model="user.lastName" required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >E-Mail</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="E-Mail" ng-model="user.email"  required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group  col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password"
+                       ng-model="user.passcode"  required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group  col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Re-Enter Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Re-Enter Password"
+                       ng-model="passcode2"  required>
+            </fieldset>
+        </div>
+        <div class="col-sm-offset-6">
+            <button type="submit" class="btn btn-primary" style="margin-top: 6%;">Register</button>
+        </div>
+    </form>
+</div>

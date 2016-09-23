@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ComponentApp</title>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <base href="/">
+    <!-- jquery version:v1.11.3 -->
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/assets/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="/assets/lib/materialize.min.js"></script>
+
+    <script src="/assets/lib/angular.min.js"></script>
+    <script src="/app/component/component.js"></script>
+</head>
+
+<body ng-controller="ParentController">
+<login-component title="'Welcome'" login-click="login" error-msg="'Bad Password'" show-error="login.error"></login-component>
+</body>
+</html>

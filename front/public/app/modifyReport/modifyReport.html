@@ -1,0 +1,31 @@
+<div class="col-sm-3 col-sm-offset-4" style="margin-top: 10%;">
+    <form ng-submit="addNewRecord();" ng-controller="ModifyReportController">
+        <div class="row">
+            <fieldset class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Date</label>
+                <!--<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Date" ng-model="details.date"  required> -->
+                <input class="form-control ng-pristine ng-valid ng-touched" type="date" name="date" ng-model="editReport.date" required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group  col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Time</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Time"
+                       ng-model="editReport.time" required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 loginAttr">
+                <label >Notes</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Notes" ng-model="editReport.notes"  required>
+            </fieldset>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-md-offset-3 col-xs-offset-2 input-group">
+                <button type="button" class="btn btn-primary addLeftMarginBack" style="margin-top: 6%;" ng-click="delete()">Delete</button>
+                <button type="button" class="btn btn-primary addLeftMargin" style="margin-top: 6%;" ng-click="back()">Back</button>
+                <button type="submit" class="btn btn-primary addLeftMargin" style="margin-top: 6%;" ng-click="submit()">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

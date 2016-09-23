@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card-panel teal lighten-2 flow-text white-text">
+        {{login.title}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" ng-model="login.email" class="validate" required>
+                <label for="email" >Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" ng-model="login.password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+
+        <span ng-if="login.showError" class="red-text">{{login.errorMsg}}</span>
+        <button class="btn waves-effect waves-light right" type="button" name="action" ng-click="login.submitClick()">Login</button>
+    </div>
+</div>

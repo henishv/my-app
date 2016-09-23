@@ -1,0 +1,15 @@
+{
+  "name": "config",
+  "description": "config",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Henish Vilasi",
+    "email": "henish.vilasi@gmail.com"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "license": "",
+  "main": "config"
+}

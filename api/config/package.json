@@ -1,0 +1,15 @@
+{
+  "name": "config",
+  "description": "IAMWebUI config",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Henish Vilasi",
+    "email": "henishv@smartek21.com"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "license": "",
+  "main": "config"
+}

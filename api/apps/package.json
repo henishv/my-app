@@ -1,0 +1,20 @@
+{
+  "name": "apps",
+  "description": "apps",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Henish Vilasi",
+    "email": "henish.vilasi@gmail.com"
+  },
+  "repository": {},
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "",
+  "main": "app.js",
+  "engines": {
+    "node": ">= 4.4.3"
+  },
+  "keywords": []
+}
