@@ -3,21 +3,28 @@
 
     angular.module('app',[]);
 
-    angular.module('app').controller('ParentController',function($scope) {
+    angular
+        .module('app')
+        .controller('ParentController',ParentController);
 
-        $scope.login = login;
+    ParentController.$inject = [];
+
+    /* @ngInject */
+    function ParentController() {
+        let vm = this;
+        vm.login = login;
 
         function login(email, password) {
             console.log("email:", email);
             console.log("password:", password);
-            $scope.login.error = !$scope.login.error;
+            vm.error = !vm.error;
         }
-    });
+    };
 
     let componentOptions = {
         bindings: {
             title: '<',
-            loginClick : '&',
+            loginClick : '=',
             errorMsg: '=',
             showError: '='
         },
