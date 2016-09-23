@@ -1,3 +1,4 @@
+# my-app
 What does this App do?
 
 A simple app that registers a user and lets user to log into the app to record time spent on a task details.
@@ -22,13 +23,17 @@ Learnings:
 Reference Links:
 
 https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
+
 https://github.com/johnpapa/ng-demos
+
 https://scotch.io/tutorials/how-to-use-angular-1-5s-component-method
 
 Different Routes:
 
 Custom Directive: http://localhost:9001/directive
+
 Custom Component: http://localhost:9001/component
+
 Login Page: http://localhost:9001/
 
 Implemented Angular 1 styles for Authentication Service, Login Controller, Register Controller, ProfilePicture Directive and Login Component.
