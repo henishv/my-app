@@ -31,11 +31,11 @@
                 vm.userinfo.isLoggedIn = userDetails.isLoggedIn;
                 vm.userinfo.userId = userDetails.userId;
                 $state.go('dashboard');
-            }
+            };
 
             function failed(error) {
                 console.log("error:", error);
-            }
+            };
         };
     }
 })();

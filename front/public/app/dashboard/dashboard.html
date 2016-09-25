@@ -2,14 +2,14 @@
     <div class="form-group col-sm-offset-3 col-md-offset-3 col-xs-offset-2 addMargin container" >
 
         <div class="col-sm-offset-3 col-md-offset-3 col-xs-offset-2 input-group btn-margin-adjst">
-            <button type="button" class="btn btn-success" ng-click="addNew()">
+            <button type="button" class="btn btn-success" ng-click="vm.addNew()">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
             <label class="addLeftMargin lbl-margin-adjst">From:</label>
-            <input class="ng-pristine ng-valid ng-touched" type="date" name="date" ng-model="searchData.fromDt" required>
+            <input class="ng-pristine ng-valid ng-touched" type="date" name="date" ng-model="vm.searchData.fromDt" required>
             <label class="addLeftMargin lbl-margin-adjst">To:</label>
-            <input class=" ng-pristine ng-valid ng-touched" type="date" name="date" ng-model="searchData.toDt" required>
-            <button type="submit" class="btn btn-primary addLeftMargin" ng-click="search()">Search</button>
+            <input class=" ng-pristine ng-valid ng-touched" type="date" name="date" ng-model="vm.searchData.toDt" required>
+            <button type="submit" class="btn btn-primary addLeftMargin" ng-click="vm.search()">Search</button>
         </div>
         <table class="margin-table table-hover" >
             <thead >
@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in rows" ng-dblclick="setCurrentRow($index);">
+            <tr ng-repeat="row in vm.rows" ng-dblclick="vm.setCurrentRow($index);">
                 <td>{{row.date | date :  "dd.MM" }}</td>
                 <td>{{row.time}}</td>
                 <td>{{row.notes}}</td>

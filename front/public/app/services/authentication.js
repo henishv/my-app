@@ -14,7 +14,7 @@
         this.isAuthenticated = isAuthenticated;
 
         function authenticateUser(authInfo) {
-            return $http.post('http://' + window.location.hostname + ':9000/api/auth', authInfo)
+            return $http.post(`${window.location.protocol}//${window.location.hostname}:9000/api/auth`, authInfo)
                 .then(function (res) {
 
                     let userDetails = {
