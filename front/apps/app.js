@@ -5,8 +5,8 @@ let app = express();
 let router = express.Router();
 let bodyParser = require('body-parser');
 let path = require('path');
-let config = require('front/config');
-let indexPageHandler = require('front/handlers/handler.js').indexPageHandler;
+let config = require('../config/config.js');
+let indexPageHandler = require('../handlers/handler.js').indexPageHandler;
 
 app.use('/', router);
 app.set('views', path.join(__dirname, '../views'));

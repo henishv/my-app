@@ -1,6 +1,6 @@
 'use strict';
 let db = require('./db');
-let utility = require('../helpers');
+let utility = require('../helpers/utility.js');
 
 function saveUser(params, callback) {
     if(params.firstName && params.lastName && params.email && params.passcode) {

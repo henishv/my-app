@@ -1,7 +1,7 @@
 'use strict';
 let mongoDb = require('mongodb');
 let mongoClient = mongoDb.MongoClient;
-let config = require('api/config');
+let config = require('../config/config.js');
 
 let dbObject = undefined;
 

@@ -2,8 +2,8 @@
 
 let restify = require('restify');
 let app = restify.createServer();
-let config = require('api/config');
-let serviceHandler = require('api/handlers');
+let config = require('../config/config.js');
+let serviceHandler = require('../handlers/handler.js');
 
 
 app.pre(restify.CORS({
