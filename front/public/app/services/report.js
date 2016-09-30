@@ -43,7 +43,7 @@
         };
 
         function saveReport(params) {
-            return $http.post(`${window.location.protocol}//${window.location.hostname}:9000/api/saveReport`, $scope.details)
+            return $http.post(`${window.location.protocol}//${window.location.hostname}:9000/api/saveReport`, params)
                 .then(function (res) {
                     if (res.status === 200) {
                         return true;

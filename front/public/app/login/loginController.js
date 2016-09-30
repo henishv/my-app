@@ -16,6 +16,10 @@
         vm.email = "justtest@yopmail.com";
         vm.passcode = "password";
 
+        if(authService.isAuthenticated()) {
+            $state.go('dashboard');
+        }
+
         function authenticate() {
             let user = {
                 email: vm.email,
@@ -23,67 +27,16 @@
             };
             authService.authenticateUser(user)
                 .then(success)
-                .catch(failed);
+                .catch(failure);
 
             function success(userDetails) {
-                vm.userinfo.firstName = userDetails.firstName;
-                vm.userinfo.lastName = userDetails.lastName;
-                vm.userinfo.isLoggedIn = userDetails.isLoggedIn;
-                vm.userinfo.userId = userDetails.userId;
                 $state.go('dashboard');
             };
 
-            function failed(error) {
+            function failure(error) {
                 console.log("error:", error);
             };
         };
     }
 })();
-
-
-//angular.module('app').controller('LoginController', ['authService','$scope','$http', '$rootScope', '$state', function(authService, $scope, $http, $rootScope, $state) {
-//    console.log("=====1");
-//    $rootScope.message = {
-//        show : false
-//    };
-//    this.user = {
-//        email  : '',
-//        passcode :''
-//    };
-//    console.log("=====2");
-//    $rootScope.user = {
-//        firstName:"",
-//        lastName: "",
-//        isloggedIn: false,
-//        userId: ""
-//    };
-//    console.log("=====3");
-//    $scope.submit = function() {
-//        //$http.post('http://' + window.location.hostname + ':9000/api/auth', $scope.user)
-//        //    .then(function (res) {
-//        //        $rootScope.message.show = false;
-//        //        $rootScope.user.firstName = res.data.firstName;
-//        //        $rootScope.user.lastName = res.data.lastName;
-//        //        $rootScope.user.isloggedIn = true;
-//        //        $rootScope.user.userId = res.data.userId;
-//        //        $state.go('dashboard');
-//        //
-//        //    },function(err) {
-//        //        if(err.data.status === 401) {
-//        //            $rootScope.message.show = true;
-//        //        }
-//        //    });
-//        console.log("=====4");
-//        authService.authenticateUser(this.user)
-//            .then(success)
-//            .catch(failed);
-//
-//        function success(userDetails) {
-//            console.log("success:",userDetails);
-//        }
-//        function failed(error) {
-//            console.log("error:", error);
-//        }
-//    };
-//}]);
 

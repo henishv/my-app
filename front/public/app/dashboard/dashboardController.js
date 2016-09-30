@@ -5,22 +5,27 @@
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['$localStorage', '$scope','$rootScope', '$state', 'userinfo', 'reportService'];
+    DashboardController.$inject = ['authService', '$state', 'userinfo', 'editreport', 'reportService'];
 
     /* @ngInject */
-    function DashboardController($localStorage, $scope, $rootScope, $state, userinfo, reportService) {
+    function DashboardController(authService, $state, userinfo, editreport, reportService) {
 
         var vm = this;
         vm.searchData = {};
         vm.search = search;
         vm.addNew = addNew;
+        vm.setCurrentRow = setCurrentRow;
 
         activate();
 
         function activate() {
-            if($localStorage.loginObj && $localStorage.loginObj.isLoggedIn === true) {
+            if(authService.isAuthenticated()) {
+                if(userinfo.userId != authService.getUserInfo().userId) {
+                    authService.setUserInfo();
+                }
                 reportService.getReport(userinfo)
-                    .then(success, failure);
+                    .then(success)
+                    .catch(failure);
             } else {
                 $state.go('login');
             }
@@ -29,7 +34,7 @@
             };
 
             function failure(error) {
-                console.log(error);
+                console.log("error:", error);
             };
         };
 
@@ -38,13 +43,16 @@
                 if(vm.searchData.hasOwnProperty("fromDt") && vm.searchData.hasOwnProperty("toDt")) {
                     vm.searchData.userId = userinfo.userId;
                     reportService.searchReport(vm.searchData)
-                        .then(function(result) {
-                            vm.rows = result.rows;
-                        }, function(err) {
-                            console.log(err);
-                        });
+                        .then(success)
+                        .catch(failure);
                 }
+            }
+            function success(result) {
+                vm.rows = result.rows;
+            }
 
+            function failure(error) {
+                console.log("error:", error);
             }
         };
 
@@ -52,57 +60,13 @@
             $state.go('addNew');
         };
 
-        $rootScope.editReport = "";
-        $scope.setCurrentRow = function(index) {
-            $rootScope.editReport = $scope.rows[index];
-            $rootScope.editReport._id = Object($rootScope.editReport._id);
-            $rootScope.editReport.date = new Date($rootScope.editReport.date);
+        function setCurrentRow(index) {
+            editreport.editReport = vm.rows[index];
+            editreport.editReport._id = Object(editreport.editReport._id);
+            editreport.editReport.date = new Date(editreport.editReport.date);
             $state.go('modifyReport');
         };
 
     }
 
 })();
-
-//angular.module('app').controller('DashboardController', ['$scope','$rootScope','$http','$state', function($scope, $rootScope, $http, $state) {
-//    if(!$rootScope.hasOwnProperty('user')) $state.go('login');
-//
-//    if($rootScope.user.isloggedIn === false) {
-//        $state.go('login');
-//    } else {
-//        $http.post('http://' + window.location.hostname + ':9000/api/getReport', $rootScope.user)
-//            .then(function (res) {
-//                if(res.data.status === 200) {
-//                    $scope.rows = res.data.rows;
-//                }
-//            },function(err) {
-//                console.log(err);
-//            });
-//    }
-//    $rootScope.editReport = "";
-//    $scope.setCurrentRow = function(index) {
-//        $rootScope.editReport = $scope.rows[index];
-//        $rootScope.editReport._id = Object($rootScope.editReport._id);
-//        $rootScope.editReport.date = new Date($rootScope.editReport.date);
-//        $state.go('modifyReport');
-//    };
-//    $scope.addNew = function () {
-//        $state.go('addNew');
-//    };
-//    $scope.search = function () {
-//        if($scope.hasOwnProperty("searchData")) {
-//            if($scope.searchData.hasOwnProperty("fromDt") && $scope.searchData.hasOwnProperty("toDt")) {
-//                $scope.searchData.userId = $rootScope.user.userId;
-//                $http.post('http://' + window.location.hostname + ':9000/api/search', $scope.searchData)
-//                    .then(function (res) {
-//                        if(res.data.status === 200) {
-//                            $scope.rows = res.data.rows;
-//                        }
-//                    }, function(err) {
-//                        console.log(err);
-//                    });
-//            }
-//
-//        }
-//    }
-//}]);

@@ -1,29 +1,52 @@
+(function () {
+    'use strict';
 
-angular.module('app').controller('AddNewController', ['$scope','$rootScope','$http','$state', function($scope, $rootScope, $http, $state) {
-    if(!$rootScope.hasOwnProperty('user')) $state.go('login');
-    if($rootScope.user.isloggedIn===false) {
-        $state.go('login');
-    } else {
-        $scope.details = {
+    angular
+        .module('app')
+        .controller('AddNewController', AddNewController);
+
+    AddNewController.$inject = ['$state', 'authService', 'reportService', 'userinfo'];
+
+    /* @ngInject */
+    function AddNewController($state, authService, reportService, userinfo) {
+        var vm = this;
+        vm.back = back;
+        vm.submit = submit;
+        vm.details = {
             date: "",
             time: "",
             notes: "",
-            userId: $rootScope.user.userId
+            userId: userinfo.userId
         };
-        $scope.back = function () {
-            $state.go('dashboard');
-        };
-        $scope.submit = function () {
-            $http.post('http://' + window.location.hostname + ':9000/api/saveReport', $scope.details)
-                .then(function (res) {
-                    if (res.status === 200) {
-                        $state.go('dashboard');
 
+        activate();
+
+        function activate() {
+            if(!authService.isAuthenticated()) {
+                $state.go('login');
+            }
+        }
+        function back() {
+            $state.go('dashboard');
+        }
+
+        function submit() {
+            if(vm.details.date && vm.details.time && vm.details.notes && vm.details.userId) {
+                reportService.saveReport(vm.details)
+                    .then(success)
+                    .catch(failure);
+
+                function success(result) {
+                    if (result === true) {
+                        $state.go('dashboard');
                     }
-                }, function (err) {
-                    console.log(err);
-                });
-        };
+                }
+                function failure(error) {
+                    console.log("error:", error);
+                }
+            }
+        }
     }
-}]);
+
+})();
 

@@ -1,14 +1,38 @@
+(function () {
+    'use strict';
 
-angular.module('app').controller('RegisterController', ['$scope','$http','$window', function($scope, $http, $window) {
-    $scope.submit = function() {
-        return $http
-            .post('http://' + window.location.hostname + ':9000/api/register', $scope.user)
-            .then(function (res) {
-                if(res.data.status === 200) {
-                    $window.location.href = '#/registrationSuccess';
-                }
-            },function(err) {
-                console.log(err);
-            });
-    };
-}]);
+    angular
+        .module('app')
+        .controller('RegisterController', RegisterController);
+
+    RegisterController.$inject = ['$window','registerService', '$state', 'authService'];
+
+    /* @ngInject */
+    function RegisterController($window, registerService, $state, authService) {
+        var vm = this;
+        vm.user = {};
+        vm.submit = submit;
+
+        if(authService.isAuthenticated()) {
+            if(authService.isAuthenticated()) {
+                $state.go('dashboard');
+            }
+        }
+        function submit() {
+            registerService.registerUser(vm.user)
+                .then(success)
+                .catch(failure);
+        }
+
+        function success(result) {
+            if(result === true) {
+                $window.location.href = '#/registrationSuccess';
+            }
+        }
+
+        function failure(error) {
+            console.log("error:", error);
+        }
+    }
+
+})();

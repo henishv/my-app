@@ -1,13 +1,13 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController as vm">
     <div class="container-fluid">
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-if="userinfo.isLoggedIn"><a>Welcome, {{userinfo.firstName}} {{userinfo.lastName}}</a></li>
-                <li ng-if="userinfo.isLoggedIn" class="profile_icon" id="dropdownMenu" data-toggle="dropdown">
+                <li ng-if="vm.userinfo.isLoggedIn"><a>Welcome, {{vm.userinfo.firstName}} {{vm.userinfo.lastName}}</a></li>
+                <li ng-if="vm.userinfo.isLoggedIn" class="profile_icon" id="dropdownMenu" data-toggle="dropdown">
                     <img src="assets/images/profile_image.png" class="img-circle" alt="Cinque Terre" width="40" height="40">
                 </li>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu" data-toggle="dropdown">
-                    <li class="dropdown-item" ng-click="logout();" ui-sref="login" ><a>Logout</a>
+                    <li class="dropdown-item" ng-click="vm.logout();" ui-sref="login" ><a>Logout</a>
                     </li>
                 </ul>
             </ul>
