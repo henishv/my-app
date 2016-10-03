@@ -13,8 +13,8 @@
         let vm = this;
         vm.userinfo = userinfo;
         vm.submit = authenticate;
-        vm.email = "justtest@yopmail.com";
-        vm.passcode = "password";
+        vm.email = "";
+        vm.passcode = "";
 
         if(authService.isAuthenticated()) {
             $state.go('dashboard');

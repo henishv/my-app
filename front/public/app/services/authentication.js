@@ -17,18 +17,22 @@
 
         function authenticateUser(authInfo) {
             return $http.post(`${window.location.protocol}//${window.location.hostname}:9000/api/auth`, authInfo)
-                .then(function (result) {
-                    userinfo.userId = result.data.userId;
-                    userinfo.firstName = result.data.firstName;
-                    userinfo.lastName = result.data.lastName;
-                    userinfo.isLoggedIn = true;
-                    $localStorage.loginObj = userinfo;
-                    return true;
-                }, function(err) {
-                    if(err.data.status === 401) {
-                        return $q.reject(false);
-                    }
-                });
+                .then(success, error);
+        }
+
+        function success(result) {
+            userinfo.userId = result.data.userId;
+            userinfo.firstName = result.data.firstName;
+            userinfo.lastName = result.data.lastName;
+            userinfo.isLoggedIn = true;
+            $localStorage.loginObj = userinfo;
+            return true;
+        }
+
+        function error(error) {
+            if(error.data.status === 401) {
+                return $q.reject(false);
+            }
         }
 
         function isAuthenticated() {

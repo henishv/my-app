@@ -17,7 +17,7 @@ function connect(callback){
 (function() {
     if(!dbObject) {
         connect(function(err, db) {
-            if(err) console.log('error', 'Unable to connect to Mongo');
+            if(err) console.log('error', 'Unable to connect to Mongo ',err);
         });
     }
 })();
